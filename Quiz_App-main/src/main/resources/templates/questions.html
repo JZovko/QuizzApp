@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Quiz Questions</title>
+</head>
+<body>
+<h1>Quiz Questions</h1>
+<form th:action="@{/quiz/submit/{id}(id=${quizId})}" method="post">
+  <div th:each="question : ${questions}">
+    <p th:text="${question.questionTitle}"></p>
+    <input type="radio" th:name="'response-' + ${question.id}" th:value="${question.option1}" th:text="${question.option1}"/> <br>
+    <input type="radio" th:name="'response-' + ${question.id}" th:value="${question.option2}" th:text="${question.option2}"/> <br>
+    <input type="radio" th:name="'response-' + ${question.id}" th:value="${question.option3}" th:text="${question.option3}"/> <br>
+    <input type="radio" th:name="'response-' + ${question.id}" th:value="${question.option4}" th:text="${question.option4}"/> <br>
+  </div>
+  <input type="submit" value="Submit Quiz"/>
+</form>
+</body>
+</html>
